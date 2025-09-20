@@ -1,0 +1,28 @@
+[
+  {
+    "match": "**/*",
+    "headers": [
+      {
+        "name": "Content-Security-Policy",
+        "value": "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://api.icpay.org; connect-src 'self' https://oisy.com https://nfid.one https://identity.ic0.app https://ic0.app https://icp0.io https://api.coingecko.com https://api.dexscreener.com https://api.icpay.org https://api.open-meteo.com https://api.bigdatacloud.net https://api.plant.id https://*.icpay.org; img-src 'self' data: blob: https:; style-src 'self' 'unsafe-inline'; frame-src https://oisy.com https://nfid.one https://api.icpay.org; child-src https://oisy.com https://nfid.one https://api.icpay.org;"
+      },
+      {
+        "name": "Access-Control-Allow-Origin",
+        "value": "*"
+      },
+      {
+        "name": "Access-Control-Allow-Methods",
+        "value": "GET, POST, PUT, DELETE, OPTIONS"
+      },
+      {
+        "name": "Access-Control-Allow-Headers",
+        "value": "Content-Type, Authorization, X-API-Key, X-Requested-With, Accept, Origin, X-CSRF-Token, X-Requested-With"
+      },
+      {
+        "name": "Access-Control-Max-Age",
+        "value": "86400"
+      }
+    ],
+    "security_policy": "standard"
+  }
+]

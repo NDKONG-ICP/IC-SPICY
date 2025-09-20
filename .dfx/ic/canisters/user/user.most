@@ -1,0 +1,21 @@
+// Version: 1.0.0
+type UserPreferences__554105334 =
+  {language : Text; notifications : Bool; privacy_level : Text; theme : Text};
+type UserProfile__575088910 =
+  {
+    created_at : Nat64;
+    email : Text;
+    engagement : Nat;
+    last_login : Nat64;
+    location : Text;
+    modules_accessed : [Text];
+    name : Text;
+    preferences : UserPreferences__554105334;
+    referral_code : ?Text;
+    total_actions : Nat
+  };
+actor {
+  stable var activityLogEntries : [(Principal, Text, Nat64)];
+  stable var lastActionEntries : [(Principal, Nat64)];
+  stable var userDataEntries : [(Principal, UserProfile__575088910)]
+};

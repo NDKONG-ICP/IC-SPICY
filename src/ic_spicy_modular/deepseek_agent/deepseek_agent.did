@@ -1,0 +1,9 @@
+service : {
+  greet: () -> (text) query;
+  has_api_key: () -> (bool) query;
+  set_api_key: (text) -> (text);
+  set_gateway_url: (text) -> (text);
+  clear_gateway_url: () -> (text);
+  get_gateway_url: () -> (opt text) query;
+  ask_deepseek: (text) -> (text);
+} 

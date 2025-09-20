@@ -1,0 +1,14 @@
+type ChiliFact = 
+ record {
+   author: text;
+   fact: text;
+   id: nat;
+   timestamp: int;
+   title: text;
+ };
+service : {
+  add_fact: (title: text, fact: text, author: text) -> (nat);
+  get_chili_fact: () -> (text);
+  get_fact: (id: nat) -> (opt ChiliFact) query;
+  list_facts: () -> (vec ChiliFact) query;
+}

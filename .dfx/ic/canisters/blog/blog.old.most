@@ -1,0 +1,14 @@
+// Version: 1.0.0
+type Post__463154263 =
+  {
+    author : Text;
+    content : Text;
+    id : Nat;
+    photo : ?[Nat8];
+    timestamp : Int;
+    title : Text
+  };
+actor {
+  stable var nextId : Nat;
+  stable var posts : [Post__463154263]
+};

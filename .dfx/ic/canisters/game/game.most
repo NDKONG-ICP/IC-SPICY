@@ -1,0 +1,49 @@
+// Version: 1.0.0
+type GamePlant__674917052 =
+  {
+    id : Nat;
+    lastWatered : Int;
+    needsWater : Bool;
+    plantType : Text;
+    plantedAt : Int;
+    slot : Nat;
+    stage : Nat
+  };
+type GamePlayer__520182713 =
+  {
+    experience : Nat;
+    heatBalance : Nat;
+    inventory : [(Text, Nat)];
+    lastSaved : Int;
+    level : Nat;
+    name : Text;
+    plants : [GamePlant__674917052];
+    principal : Principal;
+    spicyBalance : Nat;
+    unlockedSeeds : [Text]
+  };
+type Plant__851313755 =
+  {
+    growth : Nat;
+    harvested : Bool;
+    id : Nat;
+    lastWatered : Int;
+    name : Text;
+    plantedAt : Int
+  };
+type Player__725139821 =
+  {
+    coins : Nat;
+    experience : Nat;
+    lastAction : Int;
+    level : Nat;
+    name : Text;
+    plants : [Plant__851313755];
+    principal : Principal
+  };
+actor {
+  stable var gamePlayers : [GamePlayer__520182713];
+  stable var gamePlayersMap : [(Principal, GamePlayer__520182713)];
+  stable var nextPlantId : Nat;
+  stable var players : [Player__725139821]
+};

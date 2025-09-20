@@ -1,0 +1,94 @@
+type Transaction = 
+ record {
+   amount: nat;
+   from: principal;
+   id: nat;
+   timestamp: int;
+   to: principal;
+   token: text;
+   tx_type: text;
+ };
+type Token = 
+ record {
+   decimals: nat;
+   name: text;
+   symbol: text;
+   total_supply: nat;
+ };
+type SupportedStandard = 
+ record {
+   name: text;
+   url: text;
+ };
+type Icrc28TrustedOriginsResponse = record {trusted_origins: vec text;};
+type Icrc21ConsentMessageResponse = 
+ variant {
+   Err:
+    variant {
+      ConsentMessageUnavailable: record {};
+      GenericError: record {
+                      error_code: nat;
+                      message: text;
+                    };
+      UnsupportedCanisterCall: record {};
+    };
+   Ok: Icrc21ConsentInfo;
+ };
+type Icrc21ConsentMessageRequest = 
+ record {
+   arg: blob;
+   method: text;
+   user_preferences: record {metadata: record {language: text;};};
+ };
+type Icrc21ConsentInfo = 
+ record {
+   consent_message: DisplayMessageType;
+   metadata: record {language: text;};
+ };
+type DisplayMessageType = 
+ variant {
+   GenericDisplayMessage: text;
+   LineDisplayMessage: record {pages: vec record {lines: vec text;};};
+ };
+type Balance = 
+ record {
+   amount: nat;
+   last_updated: int;
+   token: text;
+   user: principal;
+ };
+service : {
+  addIcrcToken: (tokenCanister: principal) -> (bool);
+  allowance: (owner: principal, spender: principal, token: text) ->
+   (nat) query;
+  approve: (spender: principal, token: text, amount: nat) -> (bool);
+  getAllBalances: (user: principal) -> (vec Balance) query;
+  getBalance: (user: principal, token: text) -> (nat) query;
+  getSpicyBalance: (user: principal) -> (nat) query;
+  getSupportedTokens: () -> (vec Token) query;
+  getTransactionHistory: (user: principal) -> (vec Transaction) query;
+  getWalletStats: () ->
+   (record {
+      total_transactions: nat;
+      total_users: nat;
+      total_volume: nat;
+    }) query;
+  icrc10_supported_standards: () -> (vec SupportedStandard) query;
+  icrc21_canister_call_consent_message: (request:
+   Icrc21ConsentMessageRequest) -> (Icrc21ConsentMessageResponse);
+  icrc28_trusted_origins: () -> (Icrc28TrustedOriginsResponse);
+  icrcAllowance: (token: principal, owner: principal, spender: principal) ->
+   (nat);
+  icrcApprove: (token: principal, spender: principal, amount: nat) -> (bool);
+  icrcBalance: (token: principal, owner: principal) -> (nat);
+  icrcTransfer: (token: principal, to: principal, amount: nat) -> (bool);
+  icrcTransferFrom: (token: principal, owner: principal, to: principal,
+   amount: nat) -> (bool);
+  isRegistered: (user: principal) -> (bool) query;
+  listIcrcTokens: () -> (vec principal) query;
+  mint: (to: principal, token: text, amount: nat) -> (bool);
+  registerUser: () -> (bool);
+  transfer: (to: principal, token: text, amount: nat) -> (bool);
+  transferFrom: (owner: principal, to: principal, token: text, amount:
+   nat) -> (bool);
+}

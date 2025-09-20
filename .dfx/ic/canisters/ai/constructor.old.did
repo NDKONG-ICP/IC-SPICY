@@ -1,0 +1,44 @@
+type WeatherData = 
+ record {
+   description: text;
+   humidity: float64;
+   location: text;
+   pressure: float64;
+   temperature: float64;
+   timestamp: int;
+   wind_speed: float64;
+ };
+type FarmingAdvice = 
+ record {
+   advice: text;
+   crop: text;
+   difficulty: text;
+   id: nat;
+   season: text;
+   tips: vec text;
+ };
+type AIResponse = 
+ record {
+   answer: text;
+   category: text;
+   confidence: float64;
+   id: nat;
+   question: text;
+   timestamp: int;
+   user: principal;
+ };
+service : {
+  addWeatherData: (location: text, temperature: float64, humidity: float64,
+   pressure: float64, wind_speed: float64, description: text) -> (bool);
+  ask_ai: (question: text) -> (text);
+  getAIStats: () ->
+   (record {
+      categories: vec text;
+      total_questions: nat;
+      total_users: nat;
+    }) query;
+  getAllFarmingAdvice: () -> (vec FarmingAdvice) query;
+  getConversationHistory: (user: principal) -> (vec AIResponse) query;
+  getFarmingAdviceByCrop: (crop: text) -> (opt FarmingAdvice) query;
+  getWeatherData: (location: text) -> (opt WeatherData) query;
+}

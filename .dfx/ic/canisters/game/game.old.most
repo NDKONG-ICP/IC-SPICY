@@ -1,0 +1,24 @@
+// Version: 1.0.0
+type Plant__870784980 =
+  {
+    growth : Nat;
+    harvested : Bool;
+    id : Nat;
+    lastWatered : Int;
+    name : Text;
+    plantedAt : Int
+  };
+type Player__386643203 =
+  {
+    coins : Nat;
+    experience : Nat;
+    lastAction : Int;
+    level : Nat;
+    name : Text;
+    plants : [Plant__870784980];
+    principal : Principal
+  };
+actor {
+  stable var nextPlantId : Nat;
+  stable var players : [Player__386643203]
+};

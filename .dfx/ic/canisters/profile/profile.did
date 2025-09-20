@@ -1,0 +1,63 @@
+type UserProfile = 
+ record {
+   achievements: vec text;
+   avatar_url: opt text;
+   badges: vec text;
+   bio: text;
+   display_name: text;
+   experience: nat;
+   join_date: int;
+   last_active: int;
+   level: nat;
+   location: text;
+   preferences: vec text;
+   "principal": principal;
+   social_links: vec text;
+   username: text;
+ };
+type Badge = 
+ record {
+   category: text;
+   description: text;
+   icon: text;
+   id: text;
+   name: text;
+   rarity: text;
+   requirements: vec text;
+ };
+type Achievement = 
+ record {
+   category: text;
+   description: text;
+   icon: text;
+   id: text;
+   name: text;
+   points: nat;
+   unlocked_at: opt int;
+ };
+service : {
+  addExperience: (points: nat) -> (bool);
+  awardBadge: (badge_id: text) -> (bool);
+  createProfile: (username: text, display_name: text, bio: text, avatar_url:
+   opt text, location: text, social_links: vec text, preferences:
+   vec text) -> (bool);
+  getAchievement: (achievement_id: text) -> (opt Achievement) query;
+  getAllAchievements: () -> (vec Achievement) query;
+  getAllBadges: () -> (vec Badge) query;
+  getBadge: (badge_id: text) -> (opt Badge) query;
+  getLeaderboard: () -> (vec UserProfile) query;
+  getProfile: (user: principal) -> (opt UserProfile) query;
+  getProfileStats: () ->
+   (record {
+      avg_level: float64;
+      total_achievements: nat;
+      total_badges: nat;
+      total_users: nat;
+    }) query;
+  getUserAchievements: (user: principal) -> (vec Achievement) query;
+  getUserBadges: (user: principal) -> (vec Badge) query;
+  unlockAchievement: (achievement_id: text) -> (bool);
+  updateProfile: (display_name: text, bio: text, avatar_url: opt text,
+   location: text, social_links: vec text, preferences: vec text) -> (
+   bool);
+}

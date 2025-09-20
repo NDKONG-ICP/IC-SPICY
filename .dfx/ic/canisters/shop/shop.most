@@ -1,0 +1,30 @@
+// Version: 1.0.0
+type Product__787647309 =
+  {
+    category : Text;
+    description : Text;
+    icon : Text;
+    id : Nat;
+    image_url : ?Text;
+    name : Text;
+    price : Nat;
+    rarity : Text;
+    stock : Nat
+  };
+type Purchase__719372485 =
+  {
+    id : Nat;
+    price : Nat;
+    product_id : Nat;
+    product_name : Text;
+    purchased_at : Int;
+    redeemed : Bool;
+    redeemed_at : ?Int;
+    user : Principal
+  };
+actor {
+  stable var nextProductId : Nat;
+  stable var nextPurchaseId : Nat;
+  stable var productsArr : [Product__787647309];
+  stable var purchasesArr : [Purchase__719372485]
+};

@@ -1,0 +1,16 @@
+type Post = 
+ record {
+   author: text;
+   content: text;
+   id: nat;
+   photo: opt vec nat8;
+   timestamp: int;
+   title: text;
+ };
+service : {
+  add_post: (title: text, content: text, author: text, photo:
+   opt vec nat8) -> (nat);
+  get_blog_info: () -> (text);
+  get_post: (id: nat) -> (opt Post) query;
+  list_posts: () -> (vec Post) query;
+}

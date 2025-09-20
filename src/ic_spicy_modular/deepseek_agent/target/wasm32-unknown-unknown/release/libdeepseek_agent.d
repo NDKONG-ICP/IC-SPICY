@@ -1,0 +1,1 @@
+/Users/williambeck/TheRavenProject/ic_spicy_modular_v1/IC_SPICY_DAPP/src/ic_spicy_modular/deepseek_agent/target/wasm32-unknown-unknown/release/libdeepseek_agent.rlib: /Users/williambeck/TheRavenProject/ic_spicy_modular_v1/IC_SPICY_DAPP/src/ic_spicy_modular/deepseek_agent/src/lib.rs

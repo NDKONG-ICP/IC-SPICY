@@ -1,0 +1,7 @@
+// Version: 1.0.0
+type ChiliFact__32118329 =
+  {author : Text; fact : Text; id : Nat; timestamp : Int; title : Text};
+actor {
+  stable var facts : [ChiliFact__32118329];
+  stable var nextId : Nat
+};

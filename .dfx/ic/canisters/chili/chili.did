@@ -1,0 +1,56 @@
+type ChiliVariety = 
+ record {
+   days_to_maturity: nat;
+   flavor_profile: text;
+   fruit_size: text;
+   growing_difficulty: text;
+   name: text;
+   origin: text;
+   plant_height: text;
+   shu: nat;
+ };
+type ChiliNFT = 
+ record {
+   attributes: vec text;
+   description: text;
+   heat_level: nat;
+   id: nat;
+   image_url: opt text;
+   minted_at: int;
+   name: text;
+   owner: principal;
+   rarity: text;
+   variety: text;
+ };
+type ChiliFact = 
+ record {
+   category: text;
+   fact: text;
+   id: nat;
+   source: text;
+   timestamp: int;
+   title: text;
+ };
+service : {
+  addChiliFact: (title: text, fact: text, category: text, source: text) ->
+   (nat);
+  getAllChiliNFTs: () -> (vec ChiliNFT) query;
+  getChiliFacts: () -> (vec ChiliFact) query;
+  getChiliNFT: (id: nat) -> (opt ChiliNFT) query;
+  getChiliStats: () ->
+   (record {
+      total_facts: nat;
+      total_nfts: nat;
+      total_owners: nat;
+      total_varieties: nat;
+    }) query;
+  getChiliVarieties: () -> (vec ChiliVariety) query;
+  getChiliVariety: (name: text) -> (opt ChiliVariety) query;
+  getNFTsByRarity: (rarity: text) -> (vec ChiliNFT) query;
+  getNFTsByVariety: (variety: text) -> (vec ChiliNFT) query;
+  getUserChiliNFTs: (user: principal) -> (vec ChiliNFT) query;
+  mintChiliNFT: (name: text, variety: text, heat_level: nat, rarity: 
+   text, description: text, image_url: opt text, attributes: vec text) ->
+   (nat);
+  transferChiliNFT: (nft_id: nat, to: principal) -> (bool);
+}

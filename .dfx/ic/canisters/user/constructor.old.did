@@ -1,0 +1,11 @@
+service : {
+  get_user_data: () ->
+   (opt
+     record {
+       engagement: nat;
+       location: text;
+       name: text;
+       referral_code: opt text;
+     }) query;
+  initialize: (name: text, text, referral_code: opt text) -> ();
+}

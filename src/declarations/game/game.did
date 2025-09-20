@@ -1,0 +1,24 @@
+type Player = 
+ record {
+   coins: nat;
+   name: text;
+   plants: vec Plant;
+   "principal": principal;
+ };
+type Plant = 
+ record {
+   growth: nat;
+   harvested: bool;
+   id: nat;
+   lastWatered: int;
+   name: text;
+ };
+service : {
+  get_game_status: () -> (text);
+  get_player: () -> (opt Player) query;
+  harvest_plant: (plantId: nat) -> (bool);
+  leaderboard: () -> (vec Player) query;
+  plant_seed: (name: text) -> (nat);
+  register_player: (name: text) -> ();
+  water_plant: (plantId: nat) -> (bool);
+}

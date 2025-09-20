@@ -1,0 +1,15 @@
+// Version: 1.0.0
+type StakePosition__926161359 =
+  {
+    amount : Nat64;
+    apy : Float;
+    last_claimed : Nat64;
+    lock_months : Nat;
+    principal : Principal;
+    rewards : Nat;
+    staked_at : Nat64;
+    unstaked : Bool
+  };
+actor {
+  stable var stakesArr : [StakePosition__926161359]
+};

@@ -1,0 +1,29 @@
+// Version: 1.0.0
+type ChiliFact__1052397270 =
+  {
+    category : Text;
+    fact : Text;
+    id : Nat;
+    source : Text;
+    timestamp : Int;
+    title : Text
+  };
+type ChiliNFT__746152049 =
+  {
+    attributes : [Text];
+    description : Text;
+    heat_level : Nat;
+    id : Nat;
+    image_url : ?Text;
+    minted_at : Int;
+    name : Text;
+    owner : Principal;
+    rarity : Text;
+    variety : Text
+  };
+actor {
+  stable var chiliFactsArr : [ChiliFact__1052397270];
+  stable var chiliNFTsArr : [ChiliNFT__746152049];
+  stable var nextFactId : Nat;
+  stable var nextNFTId : Nat
+};

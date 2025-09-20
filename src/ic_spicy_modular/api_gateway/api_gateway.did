@@ -1,0 +1,125 @@
+type Permission = variant {
+  ReadTransactions;
+  ReadBalances;
+  ReadMembers;
+  ReadAnalytics;
+  ReadInventory;
+  ReadOrders;
+  Admin;
+};
+
+type ApiKey = record {
+  id : text;
+  key : text;
+  name : text;
+  permissions : vec Permission;
+  created_at : nat64;
+  last_used : opt nat64;
+  expires_at : opt nat64;
+  is_active : bool;
+  usage_count : nat;
+  rate_limit : nat;
+  created_by : principal;
+};
+
+type ApiKeyRequest = record {
+  name : text;
+  permissions : vec Permission;
+  expires_in_days : opt nat;
+  rate_limit : opt nat;
+};
+
+type TransactionData = record {
+  id : nat;
+  from : principal;
+  to : principal;
+  token : text;
+  amount : nat;
+  timestamp : int;
+  tx_type : text;
+  block_hash : opt text;
+  fee : opt nat;
+};
+
+type PaginatedTransactions = record {
+  transactions : vec TransactionData;
+  total_count : nat;
+  page : nat;
+  limit : nat;
+  has_next : bool;
+};
+
+type AnalyticsData = record {
+  total_transactions : nat;
+  total_volume : nat;
+  active_users : nat;
+  daily_transactions : nat;
+  timestamp : nat64;
+};
+
+type ApiResponse = variant {
+  Ok : text;
+  Err : text;
+};
+
+type ApiKeyResponse = variant {
+  Ok : ApiKey;
+  Err : text;
+};
+
+type TransactionResponse = variant {
+  Ok : PaginatedTransactions;
+  Err : text;
+};
+
+type AnalyticsResponse = variant {
+  Ok : AnalyticsData;
+  Err : text;
+};
+
+type BalanceResponse = variant {
+  Ok : vec record { text; nat };
+  Err : text;
+};
+
+type UsageStats = record {
+  usage_count : nat;
+  last_used : opt nat64;
+  rate_limit_remaining : nat;
+};
+
+type UsageResponse = variant {
+  Ok : UsageStats;
+  Err : text;
+};
+
+// HTTP Request/Response Types
+type HttpRequest = record {
+  method : text;
+  url : text;
+  headers : vec record { text; text };
+  body : blob;
+};
+
+type HttpResponse = record {
+  status_code : nat16;
+  headers : vec record { text; text };
+  body : blob;
+};
+
+service : {
+  // HTTP Request Handler
+  http_request : (HttpRequest) -> (HttpResponse);
+  
+  // API Key Management
+  createApiKey : (ApiKeyRequest) -> (ApiKeyResponse);
+  listApiKeys : () -> (vec ApiKey) query;
+  revokeApiKey : (text) -> (bool);
+  validateKey : (text) -> (bool) query;
+  getApiUsage : (text) -> (UsageResponse) query;
+  
+  // Data Export Endpoints
+  getTransactions : (text, opt nat, opt nat, opt principal, opt text, opt int, opt int) -> (TransactionResponse) query;
+  getAnalytics : (text) -> (AnalyticsResponse) query;
+  getUserBalances : (text, principal) -> (BalanceResponse) query;
+}

@@ -1,0 +1,17 @@
+type Post = 
+ record {
+   author: text;
+   content: text;
+   id: nat;
+   timestamp: int;
+   title: text;
+ };
+service : {
+  add_post: (title: text, content: text, author: text) -> (nat);
+  get_blog_info: () -> (text) query;
+  icrc21_canister_call_consent_message: () -> (opt text) query;
+  icrc21_canister_call_consent_message_metadata: () -> (opt vec text) query;
+  icrc21_canister_call_consent_message_preview: () -> (opt text) query;
+  icrc21_canister_call_consent_message_url: () -> (opt text) query;
+  list_posts: () -> (vec Post) query;
+}

@@ -1,0 +1,43 @@
+// Version: 1.0.0
+type Achievement__58656453 =
+  {
+    category : Text;
+    description : Text;
+    icon : Text;
+    id : Text;
+    name : Text;
+    points : Nat;
+    unlocked_at : ?Int
+  };
+type Badge__748943592 =
+  {
+    category : Text;
+    description : Text;
+    icon : Text;
+    id : Text;
+    name : Text;
+    rarity : Text;
+    requirements : [Text]
+  };
+type UserProfile__966886455 =
+  {
+    achievements : [Text];
+    avatar_url : ?Text;
+    badges : [Text];
+    bio : Text;
+    display_name : Text;
+    experience : Nat;
+    join_date : Int;
+    last_active : Int;
+    level : Nat;
+    location : Text;
+    preferences : [Text];
+    principal : Principal;
+    social_links : [Text];
+    username : Text
+  };
+actor {
+  stable var achievementsArr : [Achievement__58656453];
+  stable var badgesArr : [Badge__748943592];
+  stable var profilesArr : [UserProfile__966886455]
+};

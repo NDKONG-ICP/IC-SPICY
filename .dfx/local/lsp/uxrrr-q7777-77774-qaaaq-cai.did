@@ -1,0 +1,124 @@
+type TransactionData = 
+ record {
+   amount: nat;
+   block_hash: opt text;
+   fee: opt nat;
+   from: principal;
+   id: nat;
+   timestamp: int;
+   to: principal;
+   token: text;
+   tx_type: text;
+ };
+type Permission = 
+ variant {
+   Admin;
+   ReadAnalytics;
+   ReadBalances;
+   ReadInventory;
+   ReadMembers;
+   ReadOrders;
+   ReadTransactions;
+ };
+type PaginatedTransactions = 
+ record {
+   has_next: bool;
+   limit: nat;
+   page: nat;
+   total_count: nat;
+   transactions: vec TransactionData;
+ };
+type HttpResponse = 
+ record {
+   body: blob;
+   headers: vec record {
+                  text;
+                  text;
+                };
+   status_code: nat16;
+ };
+type HttpRequest = 
+ record {
+   body: blob;
+   headers: vec record {
+                  text;
+                  text;
+                };
+   method: text;
+   url: text;
+ };
+type ApiResponse_4 = 
+ variant {
+   Err: text;
+   Ok: ApiKey;
+ };
+type ApiResponse_3 = 
+ variant {
+   Err: text;
+   Ok: AnalyticsData;
+ };
+type ApiResponse_2 = 
+ variant {
+   Err: text;
+   Ok:
+    record {
+      last_used: opt nat64;
+      rate_limit_remaining: nat;
+      usage_count: nat;
+    };
+ };
+type ApiResponse_1 = 
+ variant {
+   Err: text;
+   Ok: PaginatedTransactions;
+ };
+type ApiResponse = 
+ variant {
+   Err: text;
+   Ok: vec record {
+             text;
+             nat;
+           };
+ };
+type ApiKeyRequest = 
+ record {
+   expires_in_days: opt nat;
+   name: text;
+   permissions: vec Permission;
+   rate_limit: opt nat;
+ };
+type ApiKey = 
+ record {
+   created_at: nat64;
+   created_by: principal;
+   expires_at: opt nat64;
+   id: text;
+   is_active: bool;
+   key: text;
+   last_used: opt nat64;
+   name: text;
+   permissions: vec Permission;
+   rate_limit: nat;
+   usage_count: nat;
+ };
+type AnalyticsData = 
+ record {
+   active_users: nat;
+   daily_transactions: nat;
+   timestamp: nat64;
+   total_transactions: nat;
+   total_volume: nat;
+ };
+service : {
+  createApiKey: (request: ApiKeyRequest) -> (ApiResponse_4);
+  getAnalytics: (apiKey: text) -> (ApiResponse_3) query;
+  getApiUsage: (keyId: text) -> (ApiResponse_2) query;
+  getTransactions: (apiKey: text, page: opt nat, limit: opt nat, user:
+   opt principal, token: opt text, start_time: opt int, end_time: opt int) ->
+   (ApiResponse_1) query;
+  getUserBalances: (apiKey: text, user: principal) -> (ApiResponse) query;
+  http_request: (req: HttpRequest) -> (HttpResponse);
+  listApiKeys: () -> (vec ApiKey);
+  revokeApiKey: (keyId: text) -> (bool);
+  validateKey: (apiKey: text) -> (bool) query;
+}

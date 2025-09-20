@@ -1,0 +1,36 @@
+type StakePosition = 
+ record {
+   amount: nat64;
+   apy: float64;
+   last_claimed: nat64;
+   lock_months: nat;
+   "principal": principal;
+   rewards: nat;
+   staked_at: nat64;
+   unstaked: bool;
+ };
+type Proposal = 
+ record {
+   created_at: nat64;
+   creator: principal;
+   description: text;
+   executed: bool;
+   executed_at: opt nat64;
+   id: nat;
+   title: text;
+   votes_against: nat;
+   votes_for: nat;
+ };
+service : {
+  claim_rewards: () -> (text);
+  create_proposal: (title: text, description: text) -> (nat);
+  execute_proposal: (proposal_id: nat) -> (text);
+  get_proposal: (id: nat) -> (opt Proposal) query;
+  get_stake: () -> (opt StakePosition) query;
+  list_proposals: () -> (vec Proposal) query;
+  list_stakers: () -> (vec StakePosition) query;
+  stake: (amount: nat, lock_months: nat) -> (text);
+  total_staked: () -> (nat) query;
+  unstake: () -> (text);
+  vote: (proposal_id: nat, vote_for: bool) -> (text);
+}

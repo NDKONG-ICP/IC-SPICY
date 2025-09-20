@@ -1,0 +1,50 @@
+{
+  "ai": {
+    "ic": "kriwf-jqaaa-aaaap-qp5lq-cai"
+  },
+  "api_gateway": {
+    "ic": "ycy5f-4aaaa-aaaao-a4prq-cai"
+  },
+  "blog": {
+    "ic": "l4gsl-gyaaa-aaaap-qp5ma-cai"
+  },
+  "chili": {
+    "ic": "l3hu7-laaaa-aaaap-qp5mq-cai"
+  },
+  "deepseek_agent": {
+    "ic": "oh4o2-aiaaa-aaaap-qp5ta-cai"
+  },
+  "frontend": {
+    "ic": "vmcfj-haaaa-aaaao-a4o3q-cai"
+  },
+  "game": {
+    "ic": "lvfzx-qqaaa-aaaap-qp5nq-cai"
+  },
+  "membership": {
+    "ic": "laci2-ryaaa-aaaap-qp5oa-cai"
+  },
+  "portal": {
+    "ic": "lhdoo-4aaaa-aaaap-qp5oq-cai"
+  },
+  "profile": {
+    "ic": "loafs-kiaaa-aaaap-qp5pa-cai"
+  },
+  "shop": {
+    "ic": "ljbdg-hqaaa-aaaap-qp5pq-cai"
+  },
+  "solana_pay": {
+    "ic": "vqg7y-qaaaa-aaaao-a4ozq-cai"
+  },
+  "test_staking": {
+    "ic": "ov2zd-myaaa-aaaap-qp5qa-cai"
+  },
+  "user": {
+    "ic": "os37x-baaaa-aaaap-qp5qq-cai"
+  },
+  "wallet2": {
+    "ic": "o3yul-xiaaa-aaaap-qp5ra-cai"
+  },
+  "whitepaper": {
+    "ic": "o4zs7-2qaaa-aaaap-qp5rq-cai"
+  }
+}

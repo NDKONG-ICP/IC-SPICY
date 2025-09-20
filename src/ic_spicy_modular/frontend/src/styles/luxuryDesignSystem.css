@@ -1,0 +1,417 @@
+/* 🌟 IC SPICY Luxury Design System 🌟 */
+
+:root {
+  /* 🎨 Luxury Color Palette */
+  --luxury-gold: #FFD700;
+  --luxury-gold-dark: #B8860B;
+  --luxury-gold-light: #FFF8DC;
+  --luxury-bronze: #CD7F32;
+  --luxury-copper: #B87333;
+  --luxury-silver: #C0C0C0;
+  --luxury-platinum: #E5E4E2;
+  
+  /* 🔥 Spicy Color Palette */
+  --spicy-red: #FF4500;
+  --spicy-orange: #FF8C00;
+  --spicy-yellow: #FFD700;
+  --spicy-chili: #DC143C;
+  --spicy-fire: #FF4500;
+  
+  /* 🌙 Dark Theme Colors */
+  --dark-bg: #0A0A0A;
+  --dark-surface: #1A1A1A;
+  --dark-card: #2A2A2A;
+  --dark-border: #3A3A3A;
+  --dark-text: #FFFFFF;
+  --dark-text-secondary: #B0B0B0;
+  
+  /* ✨ Accent Colors */
+  --accent-primary: #6366F1;
+  --accent-secondary: #8B5CF6;
+  --accent-success: #10B981;
+  --accent-warning: #F59E0B;
+  --accent-error: #EF4444;
+  --accent-info: #3B82F6;
+  
+  /* 🎭 Gradients */
+  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --gradient-luxury: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FF4500 100%);
+  --gradient-spicy: linear-gradient(135deg, #FF4500 0%, #FF8C00 50%, #FFD700 100%);
+  --gradient-dark: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 50%, #3a3a3a 100%);
+  
+  /* 📏 Spacing System */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  
+  /* 🔤 Typography Scale */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-5xl: 3rem;
+  --font-size-6xl: 3.75rem;
+  
+  /* 🎯 Border Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 9999px;
+  
+  /* 🌟 Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-luxury: 0 0 50px rgba(255, 215, 0, 0.3);
+  
+  /* ⚡ Transitions */
+  --transition-fast: 150ms ease-in-out;
+  --transition-normal: 250ms ease-in-out;
+  --transition-slow: 350ms ease-in-out;
+  --transition-bounce: 400ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* 🌟 Luxury Glassmorphism */
+.luxury-glass {
+  background: rgba(255, 255, 255, 0.05);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.luxury-glass-dark {
+  background: rgba(0, 0, 0, 0.3);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.luxury-glass-gold {
+  background: rgba(255, 215, 0, 0.1);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  box-shadow: 0 8px 32px rgba(255, 215, 0, 0.2);
+}
+
+/* 🔥 Spicy Glassmorphism */
+.spicy-glass {
+  background: rgba(255, 69, 0, 0.1);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 69, 0, 0.3);
+  box-shadow: 0 8px 32px rgba(255, 69, 0, 0.2);
+}
+
+/* ✨ Luxury Buttons */
+.luxury-btn {
+  position: relative;
+  padding: var(--space-md) var(--space-xl);
+  font-weight: 600;
+  font-size: var(--font-size-base);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: none;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  overflow: hidden;
+  transition: all var(--transition-normal);
+  background: var(--gradient-luxury);
+  color: var(--dark-text);
+  box-shadow: var(--shadow-lg);
+}
+
+.luxury-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left var(--transition-slow);
+}
+
+.luxury-btn:hover::before {
+  left: 100%;
+}
+
+.luxury-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-xl), var(--shadow-luxury);
+}
+
+.luxury-btn:active {
+  transform: translateY(0);
+}
+
+/* 🔥 Spicy Buttons */
+.spicy-btn {
+  position: relative;
+  padding: var(--space-md) var(--space-xl);
+  font-weight: 600;
+  font-size: var(--font-size-base);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: none;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  overflow: hidden;
+  transition: all var(--transition-normal);
+  background: var(--gradient-spicy);
+  color: var(--dark-text);
+  box-shadow: var(--shadow-lg);
+}
+
+.spicy-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left var(--transition-slow);
+}
+
+.spicy-btn:hover::before {
+  left: 100%;
+}
+
+.spicy-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-xl);
+}
+
+/* 🌟 Luxury Cards */
+.luxury-card {
+  background: var(--dark-card);
+  border: 1px solid var(--dark-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-lg);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.luxury-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gradient-luxury);
+  transform: scaleX(0);
+  transition: transform var(--transition-normal);
+}
+
+.luxury-card:hover::before {
+  transform: scaleX(1);
+}
+
+.luxury-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-2xl);
+  border-color: var(--luxury-gold);
+}
+
+/* 🔥 Spicy Cards */
+.spicy-card {
+  background: var(--dark-card);
+  border: 1px solid var(--dark-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-lg);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.spicy-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gradient-spicy);
+  transform: scaleX(0);
+  transition: transform var(--transition-normal);
+}
+
+.spicy-card:hover::before {
+  transform: scaleX(1);
+}
+
+.spicy-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-2xl);
+  border-color: var(--spicy-red);
+}
+
+/* ✨ Luxury Inputs */
+.luxury-input {
+  background: var(--dark-surface);
+  border: 2px solid var(--dark-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md) var(--space-lg);
+  color: var(--dark-text);
+  font-size: var(--font-size-base);
+  transition: all var(--transition-normal);
+  outline: none;
+}
+
+.luxury-input:focus {
+  border-color: var(--luxury-gold);
+  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+}
+
+.luxury-input::placeholder {
+  color: var(--dark-text-secondary);
+}
+
+/* 🌟 Luxury Typography */
+.luxury-heading {
+  background: var(--gradient-luxury);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+.spicy-heading {
+  background: var(--gradient-spicy);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+/* 🎭 Luxury Animations */
+@keyframes luxury-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.6);
+  }
+}
+
+@keyframes spicy-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes luxury-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.luxury-glow {
+  animation: luxury-glow 2s ease-in-out infinite;
+}
+
+.spicy-pulse {
+  animation: spicy-pulse 2s ease-in-out infinite;
+}
+
+.luxury-float {
+  animation: luxury-float 3s ease-in-out infinite;
+}
+
+/* 🌟 Luxury Layout Components */
+.luxury-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.luxury-grid {
+  display: grid;
+  gap: var(--space-xl);
+}
+
+.luxury-flex {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+/* 🎨 Responsive Design */
+@media (max-width: 768px) {
+  .luxury-container {
+    padding: 0 var(--space-md);
+  }
+  
+  .luxury-grid {
+    gap: var(--space-lg);
+  }
+  
+  .luxury-btn,
+  .spicy-btn {
+    padding: var(--space-sm) var(--space-lg);
+    font-size: var(--font-size-sm);
+  }
+}
+
+/* 🌟 Dark Mode Enhancements */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --dark-bg: #000000;
+    --dark-surface: #0A0A0A;
+    --dark-card: #1A1A1A;
+    --dark-border: #2A2A2A;
+  }
+}
+
+/* ✨ Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* 🌟 Focus States */
+.luxury-btn:focus,
+.spicy-btn:focus,
+.luxury-input:focus {
+  outline: 2px solid var(--luxury-gold);
+  outline-offset: 2px;
+}
+
+/* 🎯 High Contrast Mode */
+@media (prefers-contrast: high) {
+  :root {
+    --dark-border: #FFFFFF;
+    --dark-text-secondary: #FFFFFF;
+  }
+}

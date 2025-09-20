@@ -1,0 +1,31 @@
+{
+  "short_name": "IC SPICY",
+  "name": "IC SPICY RWA Co-op",
+  "description": "The premier Real World Asset cooperative on the Internet Computer. Grow, harvest, and earn rewards in the interactive NFT Spicy Grotto.",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "banner.jpg",
+      "type": "image/jpeg",
+      "sizes": "1200x630"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#FF0000",
+  "background_color": "#1a1a1a"
+}

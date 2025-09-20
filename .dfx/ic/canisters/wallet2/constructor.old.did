@@ -1,0 +1,55 @@
+type Transaction = 
+ record {
+   amount: nat;
+   from: principal;
+   id: nat;
+   timestamp: int;
+   to: principal;
+   token: text;
+   tx_type: text;
+ };
+type Token = 
+ record {
+   decimals: nat;
+   name: text;
+   symbol: text;
+   total_supply: nat;
+ };
+type Balance = 
+ record {
+   amount: nat;
+   last_updated: int;
+   token: text;
+   user: principal;
+ };
+service : {
+  addIcrcToken: (tokenCanister: principal) -> (bool);
+  allowance: (owner: principal, spender: principal, token: text) ->
+   (nat) query;
+  approve: (spender: principal, token: text, amount: nat) -> (bool);
+  getAllBalances: (user: principal) -> (vec Balance) query;
+  getBalance: (user: principal, token: text) -> (nat) query;
+  getSpicyBalance: (user: principal) -> (nat) query;
+  getSupportedTokens: () -> (vec Token) query;
+  getTransactionHistory: (user: principal) -> (vec Transaction) query;
+  getWalletStats: () ->
+   (record {
+      total_transactions: nat;
+      total_users: nat;
+      total_volume: nat;
+    }) query;
+  icrcAllowance: (token: principal, owner: principal, spender: principal) ->
+   (nat);
+  icrcApprove: (token: principal, spender: principal, amount: nat) -> (bool);
+  icrcBalance: (token: principal, owner: principal) -> (nat);
+  icrcTransfer: (token: principal, to: principal, amount: nat) -> (bool);
+  icrcTransferFrom: (token: principal, owner: principal, to: principal,
+   amount: nat) -> (bool);
+  isRegistered: (user: principal) -> (bool) query;
+  listIcrcTokens: () -> (vec principal) query;
+  mint: (to: principal, token: text, amount: nat) -> (bool);
+  registerUser: () -> (bool);
+  transfer: (to: principal, token: text, amount: nat) -> (bool);
+  transferFrom: (owner: principal, to: principal, token: text, amount:
+   nat) -> (bool);
+}

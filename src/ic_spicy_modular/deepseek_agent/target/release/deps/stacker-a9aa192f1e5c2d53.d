@@ -1,0 +1,10 @@
+/Users/williambeck/ic_spicy_modular_v1/IC_SPICY_DAPP/src/ic_spicy_modular/deepseek_agent/target/release/deps/stacker-a9aa192f1e5c2d53.d: /Users/williambeck/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/stacker-0.1.21/src/lib.rs /Users/williambeck/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/stacker-0.1.21/src/backends/mod.rs /Users/williambeck/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/stacker-0.1.21/src/backends/macos.rs /Users/williambeck/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/stacker-0.1.21/src/mmap_stack_restore_guard.rs
+
+/Users/williambeck/ic_spicy_modular_v1/IC_SPICY_DAPP/src/ic_spicy_modular/deepseek_agent/target/release/deps/libstacker-a9aa192f1e5c2d53.rlib: /Users/williambeck/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/stacker-0.1.21/src/lib.rs /Users/williambeck/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/stacker-0.1.21/src/backends/mod.rs /Users/williambeck/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/stacker-0.1.21/src/backends/macos.rs /Users/williambeck/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/stacker-0.1.21/src/mmap_stack_restore_guard.rs
+
+/Users/williambeck/ic_spicy_modular_v1/IC_SPICY_DAPP/src/ic_spicy_modular/deepseek_agent/target/release/deps/libstacker-a9aa192f1e5c2d53.rmeta: /Users/williambeck/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/stacker-0.1.21/src/lib.rs /Users/williambeck/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/stacker-0.1.21/src/backends/mod.rs /Users/williambeck/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/stacker-0.1.21/src/backends/macos.rs /Users/williambeck/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/stacker-0.1.21/src/mmap_stack_restore_guard.rs
+
+/Users/williambeck/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/stacker-0.1.21/src/lib.rs:
+/Users/williambeck/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/stacker-0.1.21/src/backends/mod.rs:
+/Users/williambeck/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/stacker-0.1.21/src/backends/macos.rs:
+/Users/williambeck/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/stacker-0.1.21/src/mmap_stack_restore_guard.rs:

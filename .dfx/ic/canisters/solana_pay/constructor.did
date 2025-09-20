@@ -1,0 +1,65 @@
+type PaymentRequest = record {
+  id: text;
+  amount: float64;
+  currency: text;
+  recipient_address: text;
+  description: text;
+  expires_at: int64;
+  created_at: int64;
+  status: PaymentStatus;
+  transaction_hash: opt text;
+  metadata: opt text;
+  user_principal: text;
+};
+
+type PaymentStatus = variant {
+  Pending;
+  Processing;
+  Completed;
+  Failed;
+  Expired;
+};
+
+type PaymentResponse = record {
+  success: bool;
+  message: text;
+  payment_id: opt text;
+  transaction_hash: opt text;
+  error: opt text;
+};
+
+type CreatePaymentRequest = record {
+  amount: float64;
+  currency: text;
+  description: text;
+  expires_in_minutes: opt int32;
+  metadata: opt text;
+};
+
+type VerifyPaymentRequest = record {
+  payment_id: text;
+  transaction_signature: text;
+};
+
+type PaymentStats = record {
+  total_payments: nat64;
+  total_volume: float64;
+  success_rate: float64;
+};
+
+service : {
+  create_payment: (CreatePaymentRequest) -> (PaymentResponse);
+  get_payment: (text) -> (opt PaymentRequest);
+  list_user_payments: (text) -> (vec PaymentRequest);
+  verify_payment: (VerifyPaymentRequest) -> (PaymentResponse);
+  get_payment_status: (text) -> (opt PaymentStatus);
+  cancel_payment: (text) -> (PaymentResponse);
+  get_solana_status: () -> (text);
+  get_supported_currencies: () -> (vec text);
+  get_payment_stats: () -> (record {
+    total_payments: nat64;
+    total_volume: float64;
+    success_rate: float64;
+  });
+  activate_membership: (text) -> (PaymentResponse);
+};

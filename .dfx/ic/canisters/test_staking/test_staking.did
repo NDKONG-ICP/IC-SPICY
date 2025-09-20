@@ -1,0 +1,18 @@
+type StakePosition = 
+ record {
+   amount: nat64;
+   apy: float64;
+   last_claimed: nat64;
+   lock_months: nat;
+   "principal": principal;
+   rewards: nat;
+   staked_at: nat64;
+   unstaked: bool;
+ };
+service : {
+  claim_rewards: () -> (text);
+  get_stake: () -> (opt StakePosition) query;
+  list_stakers: () -> (vec StakePosition) query;
+  stake: (amount: nat, lock_months: nat) -> (text);
+  unstake: () -> (text);
+}

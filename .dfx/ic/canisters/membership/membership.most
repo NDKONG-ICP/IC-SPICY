@@ -1,0 +1,20 @@
+// Version: 1.0.0
+type Member__425135064 =
+  {
+    joined : Nat64;
+    last_upgrade : Nat64;
+    principal : Principal;
+    tier : MembershipTier__966326752
+  };
+type MembershipTier__966326752 = {#Basic; #Elite; #Premium};
+actor {
+  stable var bulkOperationsLog : [(Text, Text, Nat64)];
+  stable var bulkTestDataEntries : [(Text, Nat, Nat64)];
+  stable var burnTotalsEntries : [(Text, Nat)];
+  stable var burnTransactionsEntries : [(Text, Nat, Nat64)];
+  stable var membersArr : [Member__425135064];
+  stable var performanceMetrics : [(Text, Nat64, Nat)];
+  stable var pricingEntries : [(Principal, MembershipTier__966326752, Nat)];
+  stable var routingConfigEntries : [(Text, Text, Text)];
+  stable var symbolPricingEntries : [(Text, MembershipTier__966326752, Nat)]
+};

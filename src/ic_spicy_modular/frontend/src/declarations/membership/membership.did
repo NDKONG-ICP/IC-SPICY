@@ -1,0 +1,32 @@
+type MembershipTier = 
+ variant {
+   Basic;
+   Elite;
+   Premium;
+ };
+
+// Updated Member to include last_upgrade
+type Member = 
+ record {
+   joined: nat64;
+   last_upgrade: nat64;
+   principal: principal;
+   tier: MembershipTier;
+ };
+
+service : {
+  get_membership_status: (caller: principal) -> (opt Member);
+  get_required_spicy: (tier: MembershipTier) -> (nat) query;
+  // Existing join
+  join_membership: (tier: MembershipTier) -> (text);
+  // Pricing management
+  set_pricing: (token: principal, tier: MembershipTier, amount: nat) -> (bool);
+  get_pricing: (token: principal, tier: MembershipTier) -> (opt nat) query;
+  // Join with ICRC payment
+  join_membership_with_payment: (tier: MembershipTier, token: principal) -> (text);
+  // Admin treasury controls
+  admin_withdraw: (token: principal, to_owner: principal, amount: nat) -> (variant { Ok: nat; Err: text });
+  admin_collect: (token: principal, from_owner: principal, amount: nat) -> (variant { Ok: nat; Err: text });
+  // Admin/utility
+  list_members: () -> (vec Member);
+}

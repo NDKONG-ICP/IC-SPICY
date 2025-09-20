@@ -1,0 +1,76 @@
+type Player = 
+ record {
+   coins: nat;
+   experience: nat;
+   lastAction: int;
+   level: nat;
+   name: text;
+   plants: vec Plant;
+   "principal": principal;
+ };
+type Plant = 
+ record {
+   growth: nat;
+   harvested: bool;
+   id: nat;
+   lastWatered: int;
+   name: text;
+   plantedAt: int;
+ };
+type GamePlayer = 
+ record {
+   experience: nat;
+   heatBalance: nat;
+   inventory: vec record {
+                    text;
+                    nat;
+                  };
+   lastSaved: int;
+   level: nat;
+   name: text;
+   plants: vec GamePlant;
+   "principal": principal;
+   spicyBalance: nat;
+   unlockedSeeds: vec text;
+ };
+type GamePlant = 
+ record {
+   id: nat;
+   lastWatered: int;
+   needsWater: bool;
+   plantType: text;
+   plantedAt: int;
+   slot: nat;
+   stage: nat;
+ };
+service : {
+  ban_player: (player_principal: principal) -> (text);
+  buyGameItem: (item: text, cost: nat, currency: text) -> (text);
+  getGameLeaderboard: () -> (vec GamePlayer) query;
+  getGamePlayerData: () -> (opt GamePlayer) query;
+  get_game_stats: () ->
+   (record {
+      total_coins: nat;
+      total_plants: nat;
+      total_players: nat;
+    });
+  get_game_status: () -> (text);
+  get_player: () -> (opt Player) query;
+  harvestGamePlant: (plantId: nat, spicyReward: nat, heatReward: nat) ->
+   (text);
+  harvest_plant: (plantId: nat) -> (text);
+  initializeGamePlayer: () -> (bool);
+  leaderboard: () -> (vec Player) query;
+  plantGameSeed: (slotIndex: nat, seedType: text, seedCost: nat) -> (text);
+  plant_seed: (name: text) -> (text);
+  register_player: (name: text) -> (text);
+  reset_suspicious_activity: (player_principal: principal) -> (text);
+  saveGamePlayerData: (spicyBalance: nat, heatBalance: nat, level: nat,
+   experience: nat, plantsData: vec GamePlant, inventory:
+   vec record {
+         text;
+         nat;
+       }) -> (bool);
+  waterGamePlant: (plantId: nat) -> (text);
+  water_plant: (plantId: nat) -> (text);
+}

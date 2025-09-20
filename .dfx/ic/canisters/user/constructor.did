@@ -1,0 +1,44 @@
+type UserStats = 
+ record {
+   days_active: nat;
+   join_date: text;
+   last_active: text;
+   modules_count: nat;
+   total_modules: nat;
+ };
+type UserProfile = 
+ record {
+   created_at: nat64;
+   email: text;
+   engagement: nat;
+   last_login: nat64;
+   location: text;
+   modules_accessed: vec text;
+   name: text;
+   preferences: UserPreferences;
+   referral_code: opt text;
+   total_actions: nat;
+ };
+type UserPreferences = 
+ record {
+   language: text;
+   notifications: bool;
+   privacy_level: text;
+   theme: text;
+ };
+service : {
+  admin_get_activity_log: (limit: nat) ->
+   (vec record {
+          principal;
+          text;
+          nat64;
+        });
+  admin_get_all_users: () -> (vec UserProfile);
+  admin_get_user_count: () -> (nat);
+  get_total_users: () -> (nat) query;
+  get_user_data: () -> (opt UserProfile) query;
+  get_user_stats: () -> (opt UserStats) query;
+  initialize: (name: text, email: text, referral_code: opt text) -> (text);
+  track_module_access: (module_name: text) -> (text);
+  update_preferences: (preferences: UserPreferences) -> (text);
+}

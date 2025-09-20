@@ -1,0 +1,37 @@
+// Version: 1.0.0
+type AIResponse__474798173 =
+  {
+    answer : Text;
+    category : Text;
+    confidence : Float;
+    id : Nat;
+    question : Text;
+    timestamp : Int;
+    user : Principal
+  };
+type FarmingAdvice__744366390 =
+  {
+    advice : Text;
+    crop : Text;
+    difficulty : Text;
+    id : Nat;
+    season : Text;
+    tips : [Text]
+  };
+type WeatherData__797841998 =
+  {
+    description : Text;
+    humidity : Float;
+    location : Text;
+    pressure : Float;
+    temperature : Float;
+    timestamp : Int;
+    wind_speed : Float
+  };
+actor {
+  stable var aiResponsesArr : [AIResponse__474798173];
+  stable var farmingAdviceArr : [FarmingAdvice__744366390];
+  stable var nextAdviceId : Nat;
+  stable var nextResponseId : Nat;
+  stable var weatherDataArr : [WeatherData__797841998]
+};

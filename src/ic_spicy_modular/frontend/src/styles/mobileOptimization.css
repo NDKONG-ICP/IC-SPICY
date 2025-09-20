@@ -1,0 +1,477 @@
+/* 📱 IC SPICY Mobile Optimization System */
+
+/* 🎯 Mobile-First Responsive Design */
+@media (max-width: 768px) {
+  /* Typography Scaling */
+  .luxury-heading {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    line-height: 1.2;
+  }
+  
+  .spicy-heading {
+    font-size: clamp(1.25rem, 4vw, 2rem);
+    line-height: 1.3;
+  }
+  
+  /* Container Adjustments */
+  .luxury-container {
+    padding: 0 var(--space-md);
+    max-width: 100%;
+  }
+  
+  /* Grid Layouts */
+  .luxury-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+  
+  /* Card Optimizations */
+  .luxury-card,
+  .spicy-card {
+    padding: var(--space-lg);
+    margin: 0 var(--space-sm);
+  }
+  
+  /* Button Optimizations */
+  .luxury-btn,
+  .spicy-btn {
+    width: 100%;
+    padding: var(--space-lg) var(--space-xl);
+    font-size: var(--font-size-base);
+    min-height: 48px; /* Touch-friendly */
+  }
+  
+  /* Form Optimizations */
+  .luxury-input {
+    width: 100%;
+    padding: var(--space-lg);
+    font-size: 16px; /* Prevents zoom on iOS */
+    min-height: 48px;
+  }
+  
+  /* Navigation Optimizations */
+  .mobile-nav-toggle {
+    display: block;
+  }
+  
+  .desktop-nav {
+    display: none;
+  }
+  
+  /* Wallet Connection Mobile */
+  .wallet-connection-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    width: 100%;
+  }
+  
+  .wallet-option-mobile {
+    width: 100%;
+    padding: var(--space-lg);
+    text-align: left;
+    border-radius: var(--radius-lg);
+    background: var(--dark-card);
+    border: 1px solid var(--dark-border);
+    transition: all var(--transition-normal);
+  }
+  
+  .wallet-option-mobile:hover {
+    background: var(--dark-surface);
+    border-color: var(--luxury-gold);
+  }
+}
+
+/* 📱 Small Mobile Devices */
+@media (max-width: 480px) {
+  /* Spacing Adjustments */
+  :root {
+    --space-xs: 0.125rem;
+    --space-sm: 0.25rem;
+    --space-md: 0.5rem;
+    --space-lg: 0.75rem;
+    --space-xl: 1rem;
+    --space-2xl: 1.5rem;
+    --space-3xl: 2rem;
+  }
+  
+  /* Typography */
+  .luxury-heading {
+    font-size: clamp(1.25rem, 6vw, 2rem);
+  }
+  
+  .spicy-heading {
+    font-size: clamp(1rem, 5vw, 1.5rem);
+  }
+  
+  /* Container */
+  .luxury-container {
+    padding: 0 var(--space-sm);
+  }
+  
+  /* Cards */
+  .luxury-card,
+  .spicy-card {
+    padding: var(--space-md);
+    margin: 0;
+    border-radius: var(--radius-lg);
+  }
+  
+  /* Buttons */
+  .luxury-btn,
+  .spicy-btn {
+    padding: var(--space-md) var(--space-lg);
+    font-size: var(--font-size-sm);
+    min-height: 44px;
+  }
+  
+  /* Forms */
+  .luxury-input {
+    padding: var(--space-md);
+    font-size: 16px;
+    min-height: 44px;
+  }
+}
+
+/* 📱 Extra Small Mobile Devices */
+@media (max-width: 360px) {
+  /* Ultra-compact layout */
+  .luxury-container {
+    padding: 0 var(--space-xs);
+  }
+  
+  .luxury-card,
+  .spicy-card {
+    padding: var(--space-sm);
+  }
+  
+  .luxury-btn,
+  .spicy-btn {
+    padding: var(--space-sm) var(--space-md);
+    font-size: var(--font-size-xs);
+  }
+}
+
+/* 🎨 Mobile-Specific Components */
+
+/* Mobile Navigation */
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 1000;
+  transform: translateX(-100%);
+  transition: transform var(--transition-normal);
+}
+
+.mobile-nav.open {
+  transform: translateX(0);
+}
+
+.mobile-nav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-lg);
+  border-bottom: 1px solid var(--dark-border);
+}
+
+.mobile-nav-close {
+  background: none;
+  border: none;
+  color: var(--dark-text);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: var(--space-sm);
+}
+
+.mobile-nav-items {
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.mobile-nav-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  color: var(--dark-text);
+  text-decoration: none;
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-normal);
+}
+
+.mobile-nav-item:hover {
+  background: var(--dark-surface);
+  color: var(--luxury-gold);
+}
+
+.mobile-nav-item.active {
+  background: var(--gradient-luxury);
+  color: var(--dark-text);
+}
+
+/* Mobile Wallet Connection */
+.mobile-wallet-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-lg);
+}
+
+.mobile-wallet-content {
+  background: var(--dark-card);
+  border: 1px solid var(--dark-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  width: 100%;
+  max-width: 400px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+/* Mobile Blog Post */
+.mobile-blog-post {
+  margin: var(--space-md);
+  padding: var(--space-lg);
+  background: var(--dark-card);
+  border: 1px solid var(--dark-border);
+  border-radius: var(--radius-xl);
+}
+
+.mobile-blog-post-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-md);
+}
+
+.mobile-blog-post-content {
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+}
+
+/* Mobile Shop */
+.mobile-shop-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+  padding: var(--space-md);
+}
+
+.mobile-shop-item {
+  background: var(--dark-card);
+  border: 1px solid var(--dark-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  text-align: center;
+}
+
+.mobile-shop-item-image {
+  font-size: 3rem;
+  margin-bottom: var(--space-md);
+}
+
+/* Mobile Game */
+.mobile-game-container {
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.mobile-game-canvas {
+  width: 100%;
+  max-width: 400px;
+  height: 300px;
+  border: 2px solid var(--luxury-gold);
+  border-radius: var(--radius-lg);
+}
+
+/* Mobile AI Chat */
+.mobile-ai-chat {
+  height: calc(100vh - 200px);
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-ai-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-md);
+}
+
+.mobile-ai-input {
+  padding: var(--space-md);
+  border-top: 1px solid var(--dark-border);
+  background: var(--dark-card);
+}
+
+/* Mobile Wallet */
+.mobile-wallet-page {
+  padding: var(--space-md);
+}
+
+.mobile-wallet-balance {
+  text-align: center;
+  padding: var(--space-xl);
+  background: var(--dark-card);
+  border: 1px solid var(--dark-border);
+  border-radius: var(--radius-xl);
+  margin-bottom: var(--space-lg);
+}
+
+.mobile-wallet-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* Mobile Membership */
+.mobile-membership-tiers {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding: var(--space-md);
+}
+
+.mobile-membership-tier {
+  background: var(--dark-card);
+  border: 1px solid var(--dark-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  text-align: center;
+}
+
+/* Touch-Friendly Interactions */
+@media (hover: none) and (pointer: coarse) {
+  /* Remove hover effects on touch devices */
+  .luxury-btn:hover,
+  .spicy-btn:hover,
+  .luxury-card:hover,
+  .spicy-card:hover {
+    transform: none;
+    box-shadow: var(--shadow-lg);
+  }
+  
+  /* Add active states for touch */
+  .luxury-btn:active,
+  .spicy-btn:active {
+    transform: scale(0.98);
+  }
+  
+  /* Increase touch targets */
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Improve scrolling */
+  .mobile-scroll {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+}
+
+/* 🎭 Mobile Animations */
+@media (prefers-reduced-motion: no-preference) {
+  .mobile-fade-in {
+    animation: mobileFadeIn 0.3s ease-out;
+  }
+  
+  .mobile-slide-up {
+    animation: mobileSlideUp 0.3s ease-out;
+  }
+  
+  .mobile-scale-in {
+    animation: mobileScaleIn 0.2s ease-out;
+  }
+}
+
+@keyframes mobileFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes mobileSlideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes mobileScaleIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* 📱 Mobile-Specific Utilities */
+.mobile-only {
+  display: block;
+}
+
+.desktop-only {
+  display: none;
+}
+
+@media (min-width: 769px) {
+  .mobile-only {
+    display: none;
+  }
+  
+  .desktop-only {
+    display: block;
+  }
+}
+
+/* 🎯 Mobile Performance Optimizations */
+.mobile-optimized {
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* 📱 Mobile Accessibility */
+@media (prefers-contrast: high) {
+  .mobile-nav,
+  .mobile-wallet-modal {
+    border: 2px solid var(--dark-text);
+  }
+}
+
+/* 🌟 Mobile Luxury Enhancements */
+.mobile-luxury-gradient {
+  background: linear-gradient(135deg, 
+    var(--dark-bg) 0%, 
+    var(--dark-surface) 50%, 
+    var(--dark-card) 100%
+  );
+}
+
+.mobile-spicy-gradient {
+  background: linear-gradient(135deg, 
+    var(--spicy-red) 0%, 
+    var(--spicy-orange) 50%, 
+    var(--spicy-yellow) 100%
+  );
+}

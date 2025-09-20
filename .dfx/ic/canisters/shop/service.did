@@ -1,0 +1,39 @@
+type Purchase = 
+ record {
+   id: nat;
+   price: nat;
+   product_id: nat;
+   product_name: text;
+   purchased_at: int;
+   redeemed: bool;
+   redeemed_at: opt int;
+   user: principal;
+ };
+type Product = 
+ record {
+   category: text;
+   description: text;
+   icon: text;
+   id: nat;
+   image_url: opt text;
+   name: text;
+   price: nat;
+   rarity: text;
+   stock: nat;
+ };
+service : {
+  addProduct: (name: text, price: nat, icon: text, stock: nat, description:
+   text, rarity: text, category: text, image_url: opt text) -> (nat);
+  getAvailableProducts: () -> (vec Product) query;
+  getProduct: (id: nat) -> (opt Product) query;
+  getShopStats: () ->
+   (record {
+      total_products: nat;
+      total_purchases: nat;
+      total_revenue: nat;
+    }) query;
+  getUserPurchases: (user: principal) -> (vec Purchase) query;
+  purchaseProduct: (user: principal, product_id: nat, price: nat) -> (bool);
+  redeemNFT: (user: principal, purchase_id: nat) -> (bool);
+  updateProductStock: (product_id: nat, new_stock: nat) -> (bool);
+}

@@ -1,0 +1,9 @@
+/Users/williambeck/ic_spicy_modular_v1/IC_SPICY_DAPP/src/ic_spicy_modular/deepseek_agent/target/wasm32-unknown-unknown/release/deps/wasm_bindgen_futures-1c56b5f5e62cb409.d: /Users/williambeck/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/wasm-bindgen-futures-0.4.50/src/lib.rs /Users/williambeck/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/wasm-bindgen-futures-0.4.50/src/queue.rs /Users/williambeck/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/wasm-bindgen-futures-0.4.50/src/task/singlethread.rs
+
+/Users/williambeck/ic_spicy_modular_v1/IC_SPICY_DAPP/src/ic_spicy_modular/deepseek_agent/target/wasm32-unknown-unknown/release/deps/libwasm_bindgen_futures-1c56b5f5e62cb409.rlib: /Users/williambeck/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/wasm-bindgen-futures-0.4.50/src/lib.rs /Users/williambeck/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/wasm-bindgen-futures-0.4.50/src/queue.rs /Users/williambeck/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/wasm-bindgen-futures-0.4.50/src/task/singlethread.rs
+
+/Users/williambeck/ic_spicy_modular_v1/IC_SPICY_DAPP/src/ic_spicy_modular/deepseek_agent/target/wasm32-unknown-unknown/release/deps/libwasm_bindgen_futures-1c56b5f5e62cb409.rmeta: /Users/williambeck/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/wasm-bindgen-futures-0.4.50/src/lib.rs /Users/williambeck/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/wasm-bindgen-futures-0.4.50/src/queue.rs /Users/williambeck/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/wasm-bindgen-futures-0.4.50/src/task/singlethread.rs
+
+/Users/williambeck/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/wasm-bindgen-futures-0.4.50/src/lib.rs:
+/Users/williambeck/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/wasm-bindgen-futures-0.4.50/src/queue.rs:
+/Users/williambeck/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/wasm-bindgen-futures-0.4.50/src/task/singlethread.rs:

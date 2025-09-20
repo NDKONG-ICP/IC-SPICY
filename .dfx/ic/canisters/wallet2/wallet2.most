@@ -1,0 +1,20 @@
+// Version: 1.0.0
+type Balance__695250043 =
+  {amount : Nat; last_updated : Int; token : Text; user : Principal};
+type Transaction__469094175 =
+  {
+    amount : Nat;
+    from : Principal;
+    id : Nat;
+    timestamp : Int;
+    to : Principal;
+    token : Text;
+    tx_type : Text
+  };
+actor {
+  stable var allowancesArr : [(Principal, Principal, Text, Nat)];
+  stable var balancesArr : [Balance__695250043];
+  stable var icrcTokenIds : [Principal];
+  stable var nextTransactionId : Nat;
+  stable var transactionsArr : [Transaction__469094175]
+};

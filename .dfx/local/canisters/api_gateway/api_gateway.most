@@ -1,0 +1,29 @@
+// Version: 1.0.0
+type ApiKey__258580601 =
+  {
+    created_at : Nat64;
+    created_by : Principal;
+    expires_at : ?Nat64;
+    id : Text;
+    is_active : Bool;
+    key : Text;
+    last_used : ?Nat64;
+    name : Text;
+    permissions : [Permission__52515419];
+    rate_limit : Nat;
+    usage_count : Nat
+  };
+type Permission__52515419 =
+  {
+    #Admin;
+    #ReadAnalytics;
+    #ReadBalances;
+    #ReadInventory;
+    #ReadMembers;
+    #ReadOrders;
+    #ReadTransactions
+  };
+actor {
+  stable var apiKeysArr : [ApiKey__258580601];
+  stable var nextKeyId : Nat
+};

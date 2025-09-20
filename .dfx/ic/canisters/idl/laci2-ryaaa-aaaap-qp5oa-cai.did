@@ -1,0 +1,130 @@
+type SupportedStandard = 
+ record {
+   name: text;
+   url: text;
+ };
+type MembershipTier = 
+ variant {
+   Basic;
+   Elite;
+   Premium;
+ };
+type Member = 
+ record {
+   joined: nat64;
+   last_upgrade: nat64;
+   "principal": principal;
+   tier: MembershipTier;
+ };
+type Icrc28TrustedOriginsResponse = record {trusted_origins: vec text;};
+type Icrc21ConsentMessageResponse = 
+ variant {
+   Err:
+    variant {
+      ConsentMessageUnavailable: record {};
+      GenericError: record {
+                      error_code: nat;
+                      message: text;
+                    };
+      UnsupportedCanisterCall: record {};
+    };
+   Ok: Icrc21ConsentInfo;
+ };
+type Icrc21ConsentMessageRequest = 
+ record {
+   arg: blob;
+   method: text;
+   user_preferences: record {metadata: record {language: text;};};
+ };
+type Icrc21ConsentInfo = 
+ record {
+   consent_message: DisplayMessageType;
+   metadata: record {language: text;};
+ };
+type DisplayMessageType = 
+ variant {
+   GenericDisplayMessage: text;
+   LineDisplayMessage: record {pages: vec record {lines: vec text;};};
+ };
+service : {
+  admin_bulk_delete_data: (count: nat) -> (text);
+  admin_bulk_read_data: (limit: nat) -> (vec record {
+                                               text;
+                                               nat;
+                                               nat64;
+                                             });
+  admin_bulk_update_data: (count: nat) -> (text);
+  admin_clear_test_data: () -> (text);
+  admin_collect: (token: principal, from_owner: principal, amount: nat) ->
+   (variant {
+      Err: text;
+      Ok: nat;
+    });
+  admin_generate_bulk_data: (count: nat) -> (text);
+  admin_withdraw: (token: principal, to_owner: principal, amount: nat) ->
+   (variant {
+      Err: text;
+      Ok: nat;
+    });
+  get_burn_totals: () -> (vec record {
+                                text;
+                                nat;
+                              }) query;
+  get_burn_transactions: (limit: nat) -> (vec record {
+                                                text;
+                                                nat;
+                                                nat64;
+                                              }) query;
+  get_data_stats: () ->
+   (record {
+      memory_usage: nat;
+      total_metrics: nat;
+      total_operations: nat;
+      total_test_data: nat;
+    }) query;
+  get_membership_stats: () ->
+   (record {
+      basic_count: nat;
+      elite_count: nat;
+      premium_count: nat;
+      total_members: nat;
+    });
+  get_membership_status: (caller: principal) -> (opt Member);
+  get_operations_log: (limit: nat) -> (vec record {
+                                             text;
+                                             text;
+                                             nat64;
+                                           }) query;
+  get_performance_metrics: () -> (vec record {
+                                        text;
+                                        nat64;
+                                        nat;
+                                      }) query;
+  get_price_by_symbol: (symbol: text, tier: MembershipTier) ->
+   (opt nat) query;
+  get_pricing: (token: principal, tier: MembershipTier) -> (opt nat) query;
+  get_required_spicy: (tier: MembershipTier) -> (nat) query;
+  get_routing_config: () ->
+   (vec record {
+          text;
+          vec record {
+                text;
+                text;
+              };
+        }) query;
+  icrc10_supported_standards: () -> (vec SupportedStandard) query;
+  icrc21_canister_call_consent_message: (request:
+   Icrc21ConsentMessageRequest) -> (Icrc21ConsentMessageResponse);
+  icrc28_trusted_origins: () -> (Icrc28TrustedOriginsResponse);
+  join_membership: (tier: MembershipTier) -> (text);
+  join_membership_with_payment: (tier: MembershipTier, token: principal,
+   symbol: text) -> (text);
+  list_members: () -> (vec Member);
+  remove_member: (member_principal: principal) -> (text);
+  set_admin: (_new_admin: principal) -> (text);
+  set_price_by_symbol: (symbol: text, tier: MembershipTier, amount: nat) ->
+   (bool);
+  set_pricing: (token: principal, tier: MembershipTier, amount: nat) ->
+   (bool);
+  set_routing_address: (category: text, token: text, address: text) -> (bool);
+}

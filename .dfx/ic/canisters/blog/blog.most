@@ -1,0 +1,7 @@
+// Version: 1.0.0
+type Post__527019891 =
+  {author : Text; content : Text; id : Nat; timestamp : Int; title : Text};
+actor {
+  stable var nextId : Nat;
+  stable var posts : [Post__527019891]
+};

@@ -1,0 +1,33 @@
+// Version: 1.0.0
+type Proposal__371489396 =
+  {
+    created_at : Nat64;
+    creator : Principal;
+    description : Text;
+    executed : Bool;
+    executed_at : ?Nat64;
+    id : Nat;
+    min_votes_required : Nat;
+    title : Text;
+    votes_against : Nat;
+    votes_for : Nat
+  };
+type StakePosition__266206799 =
+  {
+    amount : Nat64;
+    apy : Float;
+    last_claimed : Nat64;
+    lock_months : Nat;
+    principal : Principal;
+    rewards : Nat;
+    staked_at : Nat64;
+    unstaked : Bool
+  };
+type Vote__502105009 =
+  {proposal_id : Nat; timestamp : Nat64; vote_for : Bool; voter : Principal};
+actor {
+  stable var nextProposalId : Nat;
+  stable var proposalsArr : [Proposal__371489396];
+  stable var stakesArr : [StakePosition__266206799];
+  stable var votesArr : [Vote__502105009]
+};

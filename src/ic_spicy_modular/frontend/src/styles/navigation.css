@@ -1,0 +1,169 @@
+/* Enhanced Navigation Styles */
+
+/* Ensure proper container and spacing */
+.luxury-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 640px) {
+  .luxury-container {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .luxury-container {
+    padding: 0 2rem;
+  }
+}
+
+/* Glass morphism effects */
+.luxury-glass-dark {
+  background: rgba(20, 20, 30, 0.85);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+/* Button styles */
+.luxury-btn {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(251, 146, 60, 0.2));
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  transition: all 0.3s ease;
+}
+
+.luxury-btn:hover {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.3), rgba(251, 146, 60, 0.3));
+  border-color: rgba(245, 158, 11, 0.5);
+  transform: translateY(-1px);
+}
+
+.spicy-btn {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  transition: all 0.3s ease;
+}
+
+.spicy-btn:hover {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  transform: translateY(-1px);
+}
+
+/* Heading styles */
+.luxury-heading {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b, #d97706);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Mobile menu improvements */
+@media (max-width: 1023px) {
+  .mobile-menu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+  
+  .mobile-menu-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.75rem;
+    text-align: center;
+    min-height: 4rem;
+  }
+}
+
+/* Responsive text sizing */
+@media (max-width: 640px) {
+  .responsive-text-sm {
+    font-size: 0.75rem;
+  }
+  
+  .responsive-text-base {
+    font-size: 0.875rem;
+  }
+}
+
+/* Wallet dropdown positioning */
+.wallet-dropdown {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  margin-top: 0.5rem;
+  z-index: 50;
+}
+
+@media (max-width: 640px) {
+  .wallet-dropdown {
+    right: -1rem;
+    left: -1rem;
+    margin-top: 0.25rem;
+  }
+}
+
+/* Navigation scroll effects */
+.nav-scrolled {
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Focus states for accessibility */
+.nav-link:focus,
+.nav-button:focus {
+  outline: 2px solid #f59e0b;
+  outline-offset: 2px;
+}
+
+/* Animation improvements */
+.nav-enter {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.nav-enter-active {
+  transform: translateY(0);
+  opacity: 1;
+  transition: transform 300ms ease-out, opacity 300ms ease-out;
+}
+
+/* Mobile menu slide animation */
+.mobile-menu-enter {
+  height: 0;
+  opacity: 0;
+}
+
+.mobile-menu-enter-active {
+  height: auto;
+  opacity: 1;
+  transition: height 200ms ease-out, opacity 200ms ease-out;
+}
+
+/* Ensure proper z-index stacking */
+.navigation-container {
+  position: relative;
+  z-index: 40;
+}
+
+.dropdown-menu {
+  z-index: 50;
+}
+
+.mobile-menu {
+  z-index: 45;
+}
+
+/* Improve touch targets on mobile */
+@media (max-width: 1023px) {
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+

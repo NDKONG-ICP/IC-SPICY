@@ -1,0 +1,3 @@
+service : {
+  ask_ai: (question: text) -> (text) query;
+}

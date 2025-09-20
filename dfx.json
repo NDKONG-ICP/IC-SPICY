@@ -1,0 +1,58 @@
+{
+  "canisters": {
+    "user": { "type": "motoko", "main": "src/ic_spicy_modular/user/main.mo" },
+    "ai": { "type": "motoko", "main": "src/ic_spicy_modular/ai/main.mo" },
+    "wallet2": { "type": "motoko", "main": "src/ic_spicy_modular/wallet2.mo" },
+    "portal": { "type": "motoko", "main": "src/ic_spicy_modular/portal/main.mo" },
+    "game": { "type": "motoko", "main": "src/ic_spicy_modular/game/main.mo" },
+    "blog": { "type": "motoko", "main": "src/ic_spicy_modular/blog/main.mo" },
+    "shop": { "type": "motoko", "main": "src/ic_spicy_modular/shop/main.mo" },
+    "membership": { "type": "motoko", "main": "src/ic_spicy_modular/membership/main.mo" },
+    "chili": { "type": "motoko", "main": "src/ic_spicy_modular/chili/main.mo" },
+    "profile": { "type": "motoko", "main": "src/ic_spicy_modular/profile/main.mo" },
+    "whitepaper": { "type": "motoko", "main": "src/ic_spicy_modular/whitepaper/main.mo" },
+    "api_gateway": { "type": "motoko", "main": "src/ic_spicy_modular/api_gateway/main.mo" },
+    "price_api": { "type": "motoko", "main": "src/ic_spicy_modular/price_api/main.mo" },
+    "deepseek_agent": {
+      "type": "custom",
+      "build": "cargo build --target wasm32-unknown-unknown --release --manifest-path src/ic_spicy_modular/deepseek_agent/Cargo.toml",
+      "wasm": "src/ic_spicy_modular/deepseek_agent/target/wasm32-unknown-unknown/release/deepseek_agent.wasm",
+      "candid": "src/ic_spicy_modular/deepseek_agent/deepseek_agent.did"
+    },
+    "solana_pay": {
+      "type": "custom",
+      "build": "cargo build --target wasm32-unknown-unknown --release --manifest-path src/ic_spicy_modular/solana_pay/Cargo.toml",
+      "wasm": "../target/wasm32-unknown-unknown/release/solana_pay.wasm",
+      "candid": "src/ic_spicy_modular/solana_pay/solana_pay.did",
+      "id": "vqg7y-qaaaa-aaaao-a4ozq-cai"
+    },
+    "frontend": { "type": "assets", "source": ["src/ic_spicy_modular/frontend/build"] },
+    "test_staking": {
+      "type": "motoko",
+      "main": "src/ic_spicy_modular/portal/test_staking.mo"
+    }
+  },
+  "networks": {
+    "local": {
+      "bind": "127.0.0.1:4943",
+      "type": "ephemeral"
+    },
+    "ic": {
+      "providers": [
+        "https://ic0.app/"
+      ],
+      "type": "persistent"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1,
+  "experimental": {
+    "http_outcalls": true
+  }
+}
