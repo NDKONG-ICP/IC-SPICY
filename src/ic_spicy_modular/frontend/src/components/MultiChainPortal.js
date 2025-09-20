@@ -363,11 +363,9 @@ const MultiChainPortal = () => {
     { id: 'solana', label: 'Solana', icon: '🌞' }
   ];
 
-  // Determine if any wallet is connected (including OISY through IdentityKit)
-  const isWalletConnected = principal && (plugConnected || iiLoggedIn || (principal && !plugConnected && !iiLoggedIn));
-  
   // Show connection message if no wallet is detected
-  if (!isWalletConnected) {
+  // If we reach this component, we should have a principal, but let's double-check
+  if (!principal) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 flex items-center justify-center p-4">
         <div className="max-w-md w-full bg-white/10 backdrop-blur-lg rounded-2xl p-8 text-center border border-white/20">
