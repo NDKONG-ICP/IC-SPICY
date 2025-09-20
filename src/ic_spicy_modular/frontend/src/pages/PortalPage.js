@@ -45,7 +45,9 @@ const PortalPage = () => {
   }, [plugConnected, iiLoggedIn, principal, canisters.portal]);
   
   // Use the new MultiChainPortal component
-  if (principal && (plugConnected || iiLoggedIn)) {
+  // Check for any wallet connection (Plug, Internet Identity, or IdentityKit/OISY)
+  const isWalletConnected = principal && (plugConnected || iiLoggedIn || (principal && !plugConnected && !iiLoggedIn));
+  if (isWalletConnected) {
     return <MultiChainPortal />;
   }
 
@@ -487,8 +489,7 @@ const PortalPage = () => {
     }
   };
 
-  // Wallet connection section
-  const isWalletConnected = (plugConnected || iiLoggedIn) && principal && canisters.portal;
+  // Wallet connection section - use the isWalletConnected defined above
   
   if (!isWalletConnected) {
     return (

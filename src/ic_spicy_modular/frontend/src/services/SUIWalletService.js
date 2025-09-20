@@ -469,4 +469,4 @@ class SUINFTStakingService {
   }
 }
 
-export { SUIWalletService };
+export { SUIWalletService, SUINFTStakingService };

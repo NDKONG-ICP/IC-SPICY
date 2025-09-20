@@ -2,7 +2,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useWallet } from '../WalletContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  SUIWalletService
+  SUIWalletService,
+  SUINFTStakingService
 } from '../services/SUIWalletService';
 import { 
   multiChainTransactionService 
@@ -17,7 +18,7 @@ import {
 const MultiChainPortal = () => {
   const { principal, plugConnected, iiLoggedIn, canisters } = useWallet();
   
-  // Multi-chain state management
+  // Multi-chain state management - ALL HOOKS MUST BE AT THE TOP
   const [activeTab, setActiveTab] = useState('overview');
   const [activeChain, setActiveChain] = useState('all'); // 'all', 'ic', 'sui', 'solana'
   const [loading, setLoading] = useState(false);
@@ -192,7 +193,8 @@ const MultiChainPortal = () => {
         setMessageType('success');
         
         // Load SUI staking data
-        const stakedNFTs = await suiService.getStakedNFTs(result.address);
+        const stakingService = new SUINFTStakingService(suiService.client, suiService);
+        const stakedNFTs = await stakingService.getStakedNFTs(result.address);
         setStakedSUINFTs(stakedNFTs);
       } else {
         setMessage(`Failed to connect SUI wallet: ${result.error}`);
@@ -269,12 +271,13 @@ const MultiChainPortal = () => {
 
     setLoading(true);
     try {
-      const result = await suiWallet.stakeNFT(nftId, lockDuration);
+      const stakingService = new SUINFTStakingService(suiWallet.client, suiWallet);
+      const result = await stakingService.stakeNFT(nftId, lockDuration);
       
       if (result.success) {
         setMessage(`SUI NFT staked successfully! TX: ${result.transactionHash}`);
         setMessageType('success');
-        await loadSUIStakingData(suiWallet);
+        await loadSUIStakingData(stakingService);
         
         // Record transaction
         await recordPortalTransaction({
@@ -359,6 +362,45 @@ const MultiChainPortal = () => {
     { id: 'sui', label: 'SUI Network', icon: '🔷' },
     { id: 'solana', label: 'Solana', icon: '🌞' }
   ];
+
+  // Determine if any wallet is connected (including OISY through IdentityKit)
+  const isWalletConnected = principal && (plugConnected || iiLoggedIn || (principal && !plugConnected && !iiLoggedIn));
+  
+  // Show connection message if no wallet is detected
+  if (!isWalletConnected) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 flex items-center justify-center p-4">
+        <div className="max-w-md w-full bg-white/10 backdrop-blur-lg rounded-2xl p-8 text-center border border-white/20">
+          <div className="mb-6">
+            <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
+              <span className="text-2xl">🔗</span>
+            </div>
+            <h2 className="text-2xl font-bold text-white mb-2">Wallet Connection Required</h2>
+            <p className="text-gray-300">
+              Please connect your wallet to access the Multi-Chain NFT Voting & Staking Portal.
+            </p>
+          </div>
+          <div className="space-y-3">
+            <p className="text-sm text-gray-400">
+              Supported wallets: Plug, Internet Identity, OISY (via IdentityKit)
+            </p>
+            <p className="text-xs text-gray-500">
+              Current status: Principal {principal ? 'detected' : 'not detected'}
+            </p>
+            <div className="mt-4 p-3 bg-black/20 rounded-lg text-left">
+              <p className="text-xs text-gray-400 mb-2">Debug Info:</p>
+              <div className="text-xs space-y-1">
+                <div>Principal: {principal ? '✅ Connected' : '❌ Not connected'}</div>
+                <div>Plug: {plugConnected ? '✅ Connected' : '❌ Not connected'}</div>
+                <div>Internet Identity: {iiLoggedIn ? '✅ Connected' : '❌ Not connected'}</div>
+                <div>Canisters: {canisters ? '✅ Available' : '❌ Not available'}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="relative min-h-screen py-8 px-2 md:px-0">
