@@ -78,15 +78,15 @@ Payment Methods Available:
 
 ### **🔑 API Keys Configuration**
 
-**Public Key**: `pk_IBR7yEdfinVZ4484Q5jMxgx69cTS2Lxb`  
-**Secret Key**: `sk_S22AvmijI7cjE1Ch1hdmjyniRTOsuEWR` *(Backend Only)*
+**Public Key**: `pk_***REDACTED***`  
+**Secret Key**: `sk_***REDACTED***` *(Backend Only - REMOVED FOR SECURITY)*
 
 ### **⚡ Enhanced IcPay Features**
 
 ```javascript
 // Updated IcPay Configuration
 const icpayConfig = {
-  publishableKey: 'pk_IBR7yEdfinVZ4484Q5jMxgx69cTS2Lxb',
+  publishableKey: process.env.REACT_APP_ICPAY_PK || 'pk_***REDACTED***',
   amountsUsd: [cartTotal],
   defaultAmountUsd: cartTotal,
   currency: 'USD',
@@ -183,7 +183,7 @@ const icpayConfig = {
 - ✅ Fallback configuration for development
 
 **Backend (Secure)**:
-- ⚠️ **Secret key storage needed**: `sk_S22AvmijI7cjE1Ch1hdmjyniRTOsuEWR`
+- ⚠️ **Secret key storage needed**: `sk_***REDACTED***` (REMOVED FOR SECURITY)
 - 🔐 Should be stored in backend canister or secure environment
 - 💡 Consider adding to Motoko canister as private variable
 
