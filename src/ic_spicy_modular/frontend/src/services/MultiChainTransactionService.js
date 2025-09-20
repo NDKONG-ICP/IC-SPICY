@@ -1,8 +1,9 @@
 import { transactionService } from './TransactionService';
 
-class MultiChainTransactionService extends transactionService {
+class MultiChainTransactionService {
   constructor() {
-    super();
+    // Initialize with transaction service instance
+    this.transactionService = transactionService;
     this.suiTransactions = [];
     this.solanaTransactions = [];
     this.icTransactions = [];

@@ -2,12 +2,14 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useWallet } from '../WalletContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  SUIWalletService, 
-  SUINFTStakingService 
+  SUIWalletService
 } from '../services/SUIWalletService';
 import { 
   multiChainTransactionService 
 } from '../services/MultiChainTransactionService';
+import { 
+  votingService 
+} from '../services/VotingService';
 import { 
   recordPortalTransaction 
 } from '../services/TransactionService';
@@ -190,8 +192,7 @@ const MultiChainPortal = () => {
         setMessageType('success');
         
         // Load SUI staking data
-        const stakingService = new SUINFTStakingService(suiService.client, suiService);
-        const stakedNFTs = await stakingService.getStakedNFTs(result.address);
+        const stakedNFTs = await suiService.getStakedNFTs(result.address);
         setStakedSUINFTs(stakedNFTs);
       } else {
         setMessage(`Failed to connect SUI wallet: ${result.error}`);
@@ -268,13 +269,12 @@ const MultiChainPortal = () => {
 
     setLoading(true);
     try {
-      const stakingService = new SUINFTStakingService(suiWallet.client, suiWallet);
-      const result = await stakingService.stakeNFT(nftId, lockDuration);
+      const result = await suiWallet.stakeNFT(nftId, lockDuration);
       
       if (result.success) {
         setMessage(`SUI NFT staked successfully! TX: ${result.transactionHash}`);
         setMessageType('success');
-        await loadSUIStakingData(stakingService);
+        await loadSUIStakingData(suiWallet);
         
         // Record transaction
         await recordPortalTransaction({
